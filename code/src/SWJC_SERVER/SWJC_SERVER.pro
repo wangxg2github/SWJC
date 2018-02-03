@@ -20,10 +20,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp \
-    mainWidget.cpp
+    mainWidget.cpp \
+    common/st_logger.cpp
 
 HEADERS  += \
-    mainWidget.h
+    mainWidget.h \
+    common/st_logger.h \
+    common/comm.h
 
 FORMS    += \
     mainWidget.ui
