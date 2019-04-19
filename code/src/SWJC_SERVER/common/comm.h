@@ -3,6 +3,8 @@
 #include <QDebug>
 #include <QCryptographicHash>
 
+#define cout qDebug() << __FILE__ << ":" << __LINE__ << "--->"
+
 #define printLog(logLevel, fmt, args...) \
 {\
     MyHelper::applicationLog(__FILE__, __LINE__, logLevel, fmt, ##args); \
@@ -34,6 +36,16 @@ public:
         QByteArray bb;
         bb = QCryptographicHash::hash ( pwd.toLatin1(), QCryptographicHash::Md5 );
         return md5.append(bb.toHex());
+    }
+
+    static bool checkIP(QString ip)
+    {
+        QRegExp rx2("^(\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5])$");
+        if( !rx2.exactMatch(ip) )
+        {
+            return false;
+        }
+        return true;
     }
 
 

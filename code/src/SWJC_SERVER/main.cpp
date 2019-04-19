@@ -14,7 +14,9 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     //注册日志接口函数
-    qInstallMessageHandler(stMessageOutput);
+    //qInstallMessageHandler(stMessageOutput);
+
+    qDebug("%s, %d.", "sdsdsdsd", 10);
 
     mainWidget w;
     w.show();

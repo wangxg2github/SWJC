@@ -5,8 +5,12 @@
 #include <QSystemTrayIcon>
 #include <QMenu>
 #include <QAction>
+#include <QDateTime>
 #include <QMouseEvent>
 #include <QMessageBox>
+
+#include "common/comm.h"
+#include "net/nettcpthreadpool.h"
 
 namespace Ui {
 class mainWidget;
@@ -53,7 +57,12 @@ private slots:
      */
     void on_toolBtnAll_clicked();
 
-    //void on_pushBtn_userConfig_clicked();
+    /**
+    * @brief    接收其他线程日志并输出到日志窗口
+    * @para     para
+    * @date     2019-04-12
+    */
+    void on_message(QObject *obj, QString msg);
 
 private:
     /**
@@ -64,6 +73,10 @@ private:
      * @brief 系统托盘初始化
      */
     void systemTrayInit();
+    /**
+      *
+      */
+    void settingWidgetInit();
 private:
     Ui::mainWidget *m_mainWidgetUI;
 
@@ -72,6 +85,9 @@ private:
     QMenu           *m_menuSystemTray;
     QAction         *m_actionShowWidget;
     QAction         *m_actionExit;
+
+    //业务
+    ZP_netEngine *m_pNetEngine;
 };
 
 #endif // MAINWIDGET_H
